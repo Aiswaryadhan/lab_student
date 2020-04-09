@@ -185,6 +185,9 @@ html.fullscreen-bg #wrapper {
   @media screen and (max-width: 640px) {
     .navbar-default #navbar-menu {
       float: right; } }
+#error{
+    color:red;
+}
 
 .navbar-btn {
   float: left;
