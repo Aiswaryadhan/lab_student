@@ -57,14 +57,16 @@ $(document).ready(function(){
                             },
                              data:aJson,
                             success : function(data) {
-                                if(data==="success"){
-                                                           $('#error_cred').slideUp();
-                                                           alert("success");
+                                if(data==="wrong password"){
+                                                        $('#error_cred').slideDown();
+                                                        $('#error_cred').html('Incorrect username or password');
+
 
                                 }
                                 else{
-                                      $('#error_cred').slideDown();
-                                      $('#error_cred').html('Incorrect username or password');
+                                      $('#error_cred').slideUp();
+                                     $.cookie("id", user);
+                                     window.location.replace("http://localhost:8090/home");
                                 }
 
                             }

@@ -2,23 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f681b75c-d7a3-43ad-99d1-97cc969d0099" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gec/lab_student/controllers/StudentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gec/lab_student/models/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/assets/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/assets/js/doubts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/assets/js/home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/doubts_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gec/lab_student/LabStudentApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gec/lab_student/LabStudentApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gec/lab_student/controllers/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gec/lab_student/controllers/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gec/lab_student/controllers/WebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gec/lab_student/controllers/WebController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/js/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/lab_student.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gec/lab_student/LabStudentApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gec/lab_student/LabStudentApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gec/lab_student/controllers/StudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gec/lab_student/controllers/StudentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/gec/lab_student/controllers/WebController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gec/lab_student/controllers/WebController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/assets/js/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/login_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login_page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +27,7 @@
         <option value="FxmlFile" />
         <option value="Class" />
         <option value="AnnotationType" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -45,6 +41,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -118,22 +115,38 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1585669050972" />
-    <state width="1253" height="76" key="GridCell.Tab.0.bottom" timestamp="1586421018713">
+    <state width="1253" height="231" key="GridCell.Tab.0.bottom" timestamp="1586699852002">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="76" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1586421018713" />
-    <state width="1253" height="76" key="GridCell.Tab.0.center" timestamp="1586421018711">
+    <state width="1253" height="231" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1586699852002" />
+    <state width="1253" height="231" key="GridCell.Tab.0.center" timestamp="1586699852001">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="76" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1586421018711" />
-    <state width="1253" height="76" key="GridCell.Tab.0.left" timestamp="1586421018711">
+    <state width="1253" height="231" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1586699852001" />
+    <state width="1253" height="231" key="GridCell.Tab.0.left" timestamp="1586699851999">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="76" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1586421018711" />
-    <state width="1253" height="76" key="GridCell.Tab.0.right" timestamp="1586421018712">
+    <state width="1253" height="231" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1586699851999" />
+    <state width="1253" height="231" key="GridCell.Tab.0.right" timestamp="1586699852001">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="1253" height="76" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1586421018712" />
+    <state width="1253" height="231" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1586699852001" />
+    <state width="1253" height="94" key="GridCell.Tab.1.bottom" timestamp="1586699570874">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="94" key="GridCell.Tab.1.bottom/67.27.1299.741@67.27.1299.741" timestamp="1586699570874" />
+    <state width="1253" height="94" key="GridCell.Tab.1.center" timestamp="1586699570874">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="94" key="GridCell.Tab.1.center/67.27.1299.741@67.27.1299.741" timestamp="1586699570874" />
+    <state width="1253" height="94" key="GridCell.Tab.1.left" timestamp="1586699570873">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="94" key="GridCell.Tab.1.left/67.27.1299.741@67.27.1299.741" timestamp="1586699570873" />
+    <state width="1253" height="94" key="GridCell.Tab.1.right" timestamp="1586699570874">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1253" height="94" key="GridCell.Tab.1.right/67.27.1299.741@67.27.1299.741" timestamp="1586699570874" />
     <state x="299" y="133" width="824" height="526" key="IDE.errors.dialog" timestamp="1586420490867">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -142,9 +155,24 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="249" y="54" width="924" height="684" key="Maven.ArtifactSearchDialog/67.27.1299.741@67.27.1299.741" timestamp="1585498578880" />
+    <state width="649" height="371" key="XDebugger.FullValuePopup" timestamp="1586694780153">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="649" height="371" key="XDebugger.FullValuePopup/67.27.1299.741@67.27.1299.741" timestamp="1586694780153" />
     <state x="361" y="135" width="710" height="522" key="find.popup" timestamp="1585504022344">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="361" y="135" width="710" height="522" key="find.popup/67.27.1299.741@67.27.1299.741" timestamp="1585504022344" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/gec/lab_student/controllers/StudentController.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

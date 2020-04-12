@@ -20,14 +20,26 @@ public class StudentController {
         public String login(@RequestBody Student student) {
             logger.info("hai");
             String url="http://localhost:8080/student/login";
-//            MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();
             HttpHeaders headers = new HttpHeaders();
             headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
             headers.set("Content-Type", "application/json");
-//            HttpEntity entity = new HttpEntity(body,headers);
             HttpEntity<?> httpEntity = new HttpEntity<Object>(student, headers);
-            ResponseEntity<String> result = restTemplate.exchange(url, HttpMethod.POST, httpEntity, String.class);
-            return result.getBody();
+           ResponseEntity<Student> result = restTemplate.exchange(url, HttpMethod.POST, httpEntity,Student.class);
+//           String arr[]=new String[10];
+////           int len=result.getBody().length();
+////           int i;
+////            for(i=0;i<len;i++) {
+//                arr=result.getBody().split(",");
+            System.out.println(result.toString());
+            return result.toString();
         }
+
+//    @RequestMapping(method = RequestMethod.GET,value ="/student/getName/{studId}")
+//    public String findStudent(@PathVariable String studId) {
+//        logger.info("student");
+//        String uri="http://localhost:8080/student/getName/18MCA01";
+//        String result = restTemplate.getForObject(uri,String.class);
+//        return result;
+//    }
 
 }

@@ -20,8 +20,17 @@ public class WebController {
     }
 
     @RequestMapping("/login")
-    //@ResponseBody
     public String login() {
         return "login_page";
+    }
+
+    @RequestMapping("/home")
+    public String home() {
+        return "home";
+    }
+
+    @RequestMapping("/doubts")
+    public String doubts() {
+        return "doubts_page";
     }
 }
