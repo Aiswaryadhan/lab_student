@@ -17,21 +17,20 @@ public class StudentController {
         RestTemplate restTemplate;
 
         @RequestMapping(method = RequestMethod.POST,value ="/student/login")
-        public String login(@RequestBody Student student) {
+        public Student login(@RequestBody Student student) {
             logger.info("hai");
             String url="http://localhost:8080/student/login";
             HttpHeaders headers = new HttpHeaders();
             headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
             headers.set("Content-Type", "application/json");
             HttpEntity<?> httpEntity = new HttpEntity<Object>(student, headers);
-           ResponseEntity<Student> result = restTemplate.exchange(url, HttpMethod.POST, httpEntity,Student.class);
+           ResponseEntity<Student> response = restTemplate.exchange(url, HttpMethod.POST, httpEntity,Student.class);
 //           String arr[]=new String[10];
 ////           int len=result.getBody().length();
 ////           int i;
 ////            for(i=0;i<len;i++) {
 //                arr=result.getBody().split(",");
-            System.out.println(result.toString());
-            return result.toString();
+            return response.getBody();
         }
 
 //    @RequestMapping(method = RequestMethod.GET,value ="/student/getName/{studId}")
