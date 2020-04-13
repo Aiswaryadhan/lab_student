@@ -57,16 +57,45 @@ $(document).ready(function(){
                             },
                              data:aJson,
                             success : function(data) {
-                                if(data==="wrong password"){
-                                                        $('#error_cred').slideDown();
-                                                        $('#error_cred').html('Incorrect username or password');
+//                            alert(data);
+                                if(data != null){
+
+                                       $('#error_cred').slideUp();
+
+                                       $.ajax({
+                                                                   type : "POST",
+                                                                   url : 'http://localhost:8090/student/getTeacherName',
+                                                                   headers : {
+                                                                       "Content-Type" : "application/json"
+                                                                   },
+                                                                    data:aJson,
+                                                                   success : function(data) {
+                                                                       if(data != null){
+                                                                            var dataTeacher=data.split(",");
+                                                                            $.cookie("teacherName", dataTeacher[0]);
+//                                                                            alert($cookie("teacherName"));
+                                                                            $.cookie("teacherId", dataTeacher[1]);
+//                                                                            alert($cookie("teacherId"));
+                                                                       }
+                                                                       else{
+                                                                            alert("Teacher is not logged in !")
+                                                                       }
+
+                                                                   }
+                                                               });
+
+                                       var arr=data.split(",");
+                                       $.cookie("name",arr[0]);
+                                       $.cookie("sem",arr[1]);
+                                       $.cookie("id", user);
+                                       window.location.replace("http://localhost:8090/home");
+
 
 
                                 }
                                 else{
-                                      $('#error_cred').slideUp();
-                                     $.cookie("id", user);
-                                     window.location.replace("http://localhost:8090/home");
+                                   $('#error_cred').slideDown();
+                                   $('#error_cred').html('Incorrect username or password');
                                 }
 
                             }

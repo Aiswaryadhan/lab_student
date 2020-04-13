@@ -1,15 +1,10 @@
 $(document).ready(function(){
-     if ($.cookie("id") != null) {
+     if(($.cookie("id") != null) && ($.cookie("name") != null) && ($.cookie("sem") !=null)){
                 var studId =$.cookie("id");
-//                $("#studName").text(studId);
-//                $.ajax({
-//                           type: "GET",
-//                           url: 'http://localhost:8090/student/getName/'+studId,
-//                           success: function (data) {
-//
-//                                        $("#studName").text(data);
-//                           }
-//                });
+                var studName=$.cookie("name");
+                var studSem=$.cookie("sem");
+                $("#studName").text(studName);
+
 
             }
 
