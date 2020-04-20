@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * robot.java
@@ -51,16 +52,14 @@ public class EventSimulator {
 
     public void updateData(Object object) throws Exception {
 
-//        Thread.sleep(10000);
-
         ArrayList Objects = (ArrayList) object;
         for (int i=0; i<Objects.size(); i++) {
             Object obj = Objects.get(i);
-
+            System.out.println(obj);
             if (obj instanceof MouseEvent)
                 applyMouseEvent((MouseEvent)obj);
-            else if (obj instanceof KeyEvent)
-                applyKeyEvent((KeyEvent)obj);
+            else if (obj instanceof Map)
+                applyKeyEvent((Map<Integer, Boolean>)obj);
         }
     }
 
@@ -79,10 +78,14 @@ public class EventSimulator {
         }
     }
 
-    public void applyKeyEvent(KeyEvent evt) {
-        switch(evt.getID()) {
-            case KeyEvent.KEY_PRESSED: rt.keyPress(evt.getKeyCode()); break;
-            case KeyEvent.KEY_RELEASED: rt.keyRelease(evt.getKeyCode()); break;
+    public void applyKeyEvent(Map<Integer, Boolean> evt) {
+        System.out.println("got a keyevent here");
+        for (Map.Entry<Integer, Boolean> entry : evt.entrySet()){
+            if(entry.getValue())
+                rt.keyPress(entry.getKey());
+            else
+                rt.keyRelease(entry.getKey());
         }
     }
 }
+
