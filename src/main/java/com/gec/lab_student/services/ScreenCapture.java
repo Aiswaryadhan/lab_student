@@ -2,77 +2,49 @@ package com.gec.lab_student.services;
 
 import com.gec.lab_student.utilities.ImageUtility;
 import com.gec.lab_student.utilities.ZipUtility;
-import jdk.nashorn.internal.objects.Global;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 @Service
 public class ScreenCapture {
+
     @Autowired
-    ActivemqProducerService activemqProducerService=new ActivemqProducerService();
-
-    ArrayList<Object> imageArray = new ArrayList<Object>();
-
-    int i = 0;
-
-    private static Robot r;
+    ActivemqProducerService activemqProducerService;
 
     public BufferedImage captureScreen() {
-        BufferedImage Image = null;
+        BufferedImage image = null;
         try {
-            Thread.sleep(120);
             Robot r = new Robot();
 
-            // It saves screenshot to desired path
-            String path = "/home/aiswarya/Downloads/screenshot.jpg";
-
             // Used to get ScreenSize and capture image
-            Rectangle capture =
-                    new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-            Image = r.createScreenCapture(capture);
-            ImageIO.write(Image, "jpg", new File(path));
-            System.out.println("Screenshot saved");
-            this.imageArray.add(Image);
+            Rectangle capture = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+            image = r.createScreenCapture(capture);
 
-        } catch (AWTException | IOException | InterruptedException ex) {
-            System.out.println(ex);
+        } catch (AWTException ex) {
+            ex.printStackTrace();
         }
-        return Image;
+        return image;
     }
 
-public void screen() throws IOException {
-    System.out.println(imageArray.size());
+public void publishScreen() throws IOException {
         try {
-            ArrayList<Object> SendObjects = new ArrayList<Object>();
-            SendObjects.add(CaptureScreenByteArray());
-            SendObjects.add(getScreenRect());
+            ArrayList<Object> sendObjects = new ArrayList<Object>();
+            sendObjects.add(captureScreenByteArray());
+            sendObjects.add(getScreenRect());
 
-            synchronized (imageArray) {
-                    SendObjects = imageArray;
-                    imageArray = new ArrayList<Object>();
-            }
-            i++;
-            System.out.println(i);
-            System.out.println(SendObjects);
-            activemqProducerService.send(ZipUtility.objecToByteArray(SendObjects));
-            imageArray.clear();
-            System.out.println("sent " + i + "messages");
+            activemqProducerService.send(ZipUtility.objecToByteArray(sendObjects));
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 }
 
-    public byte[] CaptureScreenByteArray() {
-        return ImageUtility.toByteArray(captureScreen());
+    public byte[] captureScreenByteArray() {
+        return ImageUtility.toByteArray(captureScreen(), -1);
     }
 
     public Rectangle getScreenRect() {
@@ -80,7 +52,4 @@ public void screen() throws IOException {
         Rectangle screenRect = new Rectangle(tk.getScreenSize());
         return screenRect;
     }
-
-
-
 }

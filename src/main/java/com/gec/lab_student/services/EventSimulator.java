@@ -1,7 +1,5 @@
 package com.gec.lab_student.services;
 
-
-import com.gec.lab_student.utilities.ImageUtility;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
@@ -40,10 +38,6 @@ public class EventSimulator {
     public BufferedImage captureScreen() {
         screenRect = new Rectangle(tk.getScreenSize());
         return rt.createScreenCapture(screenRect);
-    }
-
-    public byte[] CaptureScreenByteArray() {
-        return ImageUtility.toByteArray(captureScreen());
     }
 
     public Rectangle getScreenRect() {

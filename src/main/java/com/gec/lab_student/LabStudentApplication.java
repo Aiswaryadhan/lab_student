@@ -42,7 +42,6 @@ public class LabStudentApplication {
     }
     public static void main(String[] args) throws IOException {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(LabStudentApplication.class);
-        screenCapture.screen();
         builder.headless(false);
         ConfigurableApplicationContext context = builder.run(args);
     }
