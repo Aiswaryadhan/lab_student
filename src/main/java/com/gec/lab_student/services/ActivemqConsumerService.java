@@ -35,18 +35,5 @@ public class ActivemqConsumerService {
             eventSimulator.updateData(ZipUtility.byteArrayToObject(textBytes));
         }
 
-
-
-//        Object obj = mapper.readValue(message, Object.class);
-//        eventSimulator.updateData(obj);
-
-
-//        if (message instanceof BytesMessage) {
-//            BytesMessage bytesMessage = (BytesMessage) message;
-//            byte[] data = new byte[(int) bytesMessage.getBodyLength()];
-//            bytesMessage.readBytes(data);
-//            logger.info("Message received {}", new String(data));
-//            eventSimulator.updateData(ZipUtility.byteArrayToObject(data));
-//        }
     }
 }

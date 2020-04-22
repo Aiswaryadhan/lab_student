@@ -34,7 +34,7 @@ public class ActivemqProducerService {
     }
 
     public void send(byte[] bytes) {
-		jmsTemplate.send("events_queue", new MessageCreator() {
+		jmsTemplate.send("image_queue", new MessageCreator() {
                         @Override
                         public Message createMessage(Session session) throws JMSException {
                             BytesMessage bytesMessage = session.createBytesMessage();
