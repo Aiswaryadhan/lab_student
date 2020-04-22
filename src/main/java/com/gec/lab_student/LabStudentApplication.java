@@ -1,6 +1,8 @@
 package com.gec.lab_student;
 
+import com.gec.lab_student.services.ScreenCapture;
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
+import java.io.IOException;
 
 @SpringBootApplication
 @EnableJms
@@ -28,6 +31,8 @@ public class LabStudentApplication {
     @Value("${spring.activemq.broker-url}")
     private String activeMQUrl;
 
+    @Autowired
+    private static ScreenCapture screenCapture=new ScreenCapture();
     @Bean
     public MessageConverter jacksonJmsMessageConverter() {
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
@@ -35,9 +40,9 @@ public class LabStudentApplication {
         converter.setTypeIdPropertyName("_type");
         return converter;
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(LabStudentApplication.class);
-
+        screenCapture.screen();
         builder.headless(false);
         ConfigurableApplicationContext context = builder.run(args);
     }
