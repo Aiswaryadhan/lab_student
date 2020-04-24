@@ -30,6 +30,7 @@ public class ImageUtility {
 
     public static void write(BufferedImage image, float quality,
             OutputStream out) throws IOException {
+        init();
         ImageOutputStream ios = ImageIO.createImageOutputStream(out);
         writer.setOutput(ios);
         param.setCompressionQuality(quality);

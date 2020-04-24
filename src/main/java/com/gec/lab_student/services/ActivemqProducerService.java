@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -33,6 +34,7 @@ public class ActivemqProducerService {
         jmsTemplate.convertAndSend("test_queue", message);
     }
 
+    @Async
     public void send(byte[] bytes) {
 		jmsTemplate.send("image_queue", new MessageCreator() {
                         @Override
@@ -43,8 +45,4 @@ public class ActivemqProducerService {
                         }
                     });
     }
-
-    ObjectMapper objectMapper = new ObjectMapper();
-
-
 }

@@ -31,6 +31,12 @@ public class LabStudentApplication {
     @Value("${spring.activemq.broker-url}")
     private String activeMQUrl;
 
+    @Value("${activemq.user}")
+    private String activemqUser;
+
+    @Value("${activemq.password}")
+    private String activemqPassword;
+
     @Autowired
     private static ScreenCapture screenCapture=new ScreenCapture();
     @Bean
@@ -56,6 +62,10 @@ public class LabStudentApplication {
     public ConnectionFactory activeMQConnectionFactory() {
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
         connectionFactory.setBrokerURL(activeMQUrl);
+        connectionFactory.setUserName(activemqUser);
+        connectionFactory.setPassword(activemqPassword);
+        connectionFactory.setUseAsyncSend(true);
+        connectionFactory.setOptimizeAcknowledge(true);
         return connectionFactory;
     }
 
