@@ -1,6 +1,7 @@
 package com.gec.lab_student;
 
 import com.gec.lab_student.services.ScreenCapture;
+import com.gec.lab_student.services.SiteSubscriber;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,8 +20,9 @@ import org.springframework.jms.support.converter.MessageType;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.client.RestTemplate;
 
-import javax.jms.ConnectionFactory;
-import javax.jms.JMSException;
+import javax.jms.*;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import java.io.IOException;
 
 @SpringBootApplication
@@ -31,12 +33,14 @@ public class LabStudentApplication {
     @Value("${spring.activemq.broker-url}")
     private String activeMQUrl;
 
-    @Value("${activemq.user}")
-    private String activemqUser;
+//    @Value("${activemq.user}")
+//    private String activemqUser;
+//
+//    @Value("${activemq.password}")
+//    private String activemqPassword;
 
-    @Value("${activemq.password}")
-    private String activemqPassword;
-
+    @Autowired
+    private static SiteSubscriber siteSubscriber=new SiteSubscriber();
     @Autowired
     private static ScreenCapture screenCapture=new ScreenCapture();
     @Bean
@@ -46,10 +50,11 @@ public class LabStudentApplication {
         converter.setTypeIdPropertyName("_type");
         return converter;
     }
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, NamingException, JMSException {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(LabStudentApplication.class);
         builder.headless(false);
         ConfigurableApplicationContext context = builder.run(args);
+        siteSubscriber.getMsg();
     }
     @Bean
     JmsListenerContainerFactory<?> activeMQContainerFactory(@Qualifier("activeMQ") ConnectionFactory connectionFactory) throws JMSException {
@@ -62,8 +67,8 @@ public class LabStudentApplication {
     public ConnectionFactory activeMQConnectionFactory() {
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
         connectionFactory.setBrokerURL(activeMQUrl);
-        connectionFactory.setUserName(activemqUser);
-        connectionFactory.setPassword(activemqPassword);
+//        connectionFactory.setUserName(activemqUser);
+//        connectionFactory.setPassword(activemqPassword);
         connectionFactory.setUseAsyncSend(true);
         connectionFactory.setOptimizeAcknowledge(true);
         return connectionFactory;
