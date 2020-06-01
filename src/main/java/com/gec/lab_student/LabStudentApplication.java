@@ -54,7 +54,7 @@ public class LabStudentApplication {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(LabStudentApplication.class);
         builder.headless(false);
         ConfigurableApplicationContext context = builder.run(args);
-        siteSubscriber.getMsg();
+
     }
     @Bean
     JmsListenerContainerFactory<?> activeMQContainerFactory(@Qualifier("activeMQ") ConnectionFactory connectionFactory) throws JMSException {

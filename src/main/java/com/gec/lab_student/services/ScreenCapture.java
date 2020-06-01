@@ -44,7 +44,7 @@ public void publishScreen() throws IOException {
 }
 
     public byte[] captureScreenByteArray() {
-        return ImageUtility.toByteArray(captureScreen(), (float) 0.1);
+        return ImageUtility.toByteArray(captureScreen(), (float) 0.9);
     }
 
     public Rectangle getScreenRect() {

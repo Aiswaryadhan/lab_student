@@ -10,9 +10,13 @@
         <version>2.2.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.example</groupId>
+
     <artifactId>lab_student</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>org.example</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>lab_admin</name>
+    <description>Demo project for Spring Boot</description>
+
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->

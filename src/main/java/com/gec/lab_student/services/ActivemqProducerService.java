@@ -45,4 +45,15 @@ public class ActivemqProducerService {
                         }
                     });
     }
+    @Async
+    public void sendScreen(byte[] bytes) {
+        jmsTemplate.send("monitor_image_queue", new MessageCreator() {
+            @Override
+            public Message createMessage(Session session) throws JMSException {
+                BytesMessage bytesMessage = session.createBytesMessage();
+                bytesMessage.writeBytes(bytes);
+                return bytesMessage;
+            }
+        });
+    }
 }
