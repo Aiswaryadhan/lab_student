@@ -39,17 +39,20 @@ public class ScreenCaptureController {
     }
 
 //    @RequestMapping("/studentMonitorStart")
-//    public void startScreenCaptureMonitoring() throws InterruptedException, IOException {
-//        IS_RUNNING = Boolean.TRUE;
-//        while (IS_RUNNING){
-//            Thread.sleep(200);
-//            monitorScreenCapture.publishScreen();
-//        }
-//    }
+    public void startScreenCaptureMonitoring() throws InterruptedException, IOException {
+        IS_RUNNING = Boolean.TRUE;
+        while (IS_RUNNING){
+            Thread.sleep(200);
+            monitorScreenCapture.publishScreen();
+        }
+    }
 
     @RequestMapping("/subscriberCheck/{studId}")
-    public void subscriberCheck(@PathVariable String studId) throws IOException, JMSException {
-        monitorStudentSubscriber.check(studId);
+    public void subscriberCheck(@PathVariable String studId) throws IOException, JMSException, InterruptedException {
+
+            monitorStudentSubscriber.check(studId);
+
+
     }
 
     @RequestMapping("/stop")
@@ -59,6 +62,7 @@ public class ScreenCaptureController {
 
     @RequestMapping("/sitesBlock")
     public void sitesBlock() throws InterruptedException, IOException, JMSException {
+        System.out.println("Sites Block");
         siteSubscriber.getMsg();
     }
 }

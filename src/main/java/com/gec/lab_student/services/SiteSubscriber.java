@@ -25,7 +25,7 @@ public class SiteSubscriber {
     TopicConnection conn = null;
     TopicSession session = null;
     Topic topic = null;
-//    WebsiteBlocking websiteBlocking;
+    //    WebsiteBlocking websiteBlocking;
     public void getMsg() throws JMSException, IOException {
 //        System.out.println("hello");
         TopicConnection topicConnection = null;

@@ -1,9 +1,11 @@
 package com.gec.lab_student.services;
 
+import com.gec.lab_student.controllers.ScreenCaptureController;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQTextMessage;
 import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.jms.*;
@@ -14,11 +16,15 @@ public class MonitorStudentSubscriber {
 
     @Autowired
     MonitorScreenCapture monitorScreenCapture;
+
+    @Autowired
+    ScreenCaptureController screenCaptureController;
     TopicConnection conn = null;
     TopicSession session = null;
     Topic topic = null;
+    static Boolean IS_RUNNING=false;
     //    WebsiteBlocking websiteBlocking;
-    public void check(String studId) throws JMSException, IOException {
+    public void check(String studId) throws JMSException, IOException, InterruptedException {
 //        System.out.println("hello");
         TopicConnection topicConnection = null;
         // Producer
@@ -45,9 +51,10 @@ public class MonitorStudentSubscriber {
         System.out.println(msg1);
         int len=msg1.length();
         if(len!=0){
-            if(msg1.equalsIgnoreCase(studId)){
+            if(msg.equalsIgnoreCase(msg1)){
                 System.out.println("hai");
-                monitorScreenCapture.publishScreen();
+                screenCaptureController.startScreenCaptureMonitoring();
+
             }
         }
 
