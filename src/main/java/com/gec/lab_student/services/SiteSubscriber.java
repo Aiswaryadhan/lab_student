@@ -75,6 +75,7 @@ public class SiteSubscriber {
                     System.err.println("Sorry, but your OS doesn't support blocking.");
                     System.exit(0);
                 }
+                
 
                 // Actually block site
                 Files.write(Paths.get(hostsFile),
