@@ -7,10 +7,16 @@ import com.gec.lab_student.services.SiteSubscriber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.jms.JMSException;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.Enumeration;
 
 @RestController
 public class ScreenCaptureController {
@@ -59,8 +65,29 @@ public class ScreenCaptureController {
     public void stopScreenCapture() throws InterruptedException, IOException {
         IS_RUNNING = Boolean.FALSE;
     }
+    @RequestMapping(value = "/findIpAddress",method = RequestMethod.GET)
+    public String findIpAddress() throws UnknownHostException {
+        String ip=null;
+        try {
+            Enumeration<NetworkInterface> nics = NetworkInterface
+                    .getNetworkInterfaces();
+            while (nics.hasMoreElements()) {
+                NetworkInterface nic = nics.nextElement();
+                if (!nic.isLoopback()) {
+                    Enumeration<InetAddress> addrs = nic.getInetAddresses();
+                    while (addrs.hasMoreElements()) {
+                        InetAddress addr = addrs.nextElement();
+                        ip= addr.getHostAddress();
+                    }
+                }
+            }
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
+        return ip;
+    }
 
-    @RequestMapping("/sitesBlock")
+        @RequestMapping("/sitesBlock")
     public void sitesBlock() throws InterruptedException, IOException, JMSException {
         System.out.println("Sites Block");
         siteSubscriber.getMsg();

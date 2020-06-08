@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.jms.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -75,8 +76,16 @@ public class SiteSubscriber {
                     System.err.println("Sorry, but your OS doesn't support blocking.");
                     System.exit(0);
                 }
-                
 
+                File file = new File(hostsFile);
+
+                //Set write permission on File for all.
+                if (file.exists()) {
+                    boolean bval = file.setWritable(true,false);
+                    System.out.println("set the every user write permission: "+ bval);
+                } else {
+                    System.out.println("File not exists: ");
+                }
                 // Actually block site
                 Files.write(Paths.get(hostsFile),
                         ("127.0.0.1 " + arr[i] + "\n").getBytes(),
