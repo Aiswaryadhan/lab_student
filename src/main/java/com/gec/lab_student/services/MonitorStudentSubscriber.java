@@ -52,9 +52,12 @@ public class MonitorStudentSubscriber {
         int len=msg1.length();
         if(len!=0){
             if(msg.equalsIgnoreCase(msg1)){
-                System.out.println("hai");
+//                System.out.println("hai");
                 screenCaptureController.startScreenCaptureMonitoring();
 
+            }
+            else{
+                screenCaptureController.stopScreenCaptureMonitoring();
             }
         }
 

@@ -24,11 +24,12 @@ import javax.jms.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.io.IOException;
+import com.vnetpublishing.java.suapp.SuperUserApplication;
 
 @SpringBootApplication
 @EnableJms
 @EnableAsync
-public class LabStudentApplication {
+public class LabStudentApplication extends SuperUserApplication {
 
     @Value("${spring.activemq.broker-url}")
     private String activeMQUrl;
@@ -39,8 +40,8 @@ public class LabStudentApplication {
 //    @Value("${activemq.password}")
 //    private String activemqPassword;
 
-    @Autowired
-    private static SiteSubscriber siteSubscriber=new SiteSubscriber();
+//    @Autowired
+//    private static SiteSubscriber siteSubscriber=new SiteSubscriber();
     @Autowired
     private static ScreenCapture screenCapture=new ScreenCapture();
     @Bean
@@ -55,6 +56,15 @@ public class LabStudentApplication {
         builder.headless(false);
         ConfigurableApplicationContext context = builder.run(args);
 
+    }
+    public int run(String[] args) {
+        System.out.println("RUN AS ADMIN! YAY!");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
     @Bean
     JmsListenerContainerFactory<?> activeMQContainerFactory(@Qualifier("activeMQ") ConnectionFactory connectionFactory) throws JMSException {

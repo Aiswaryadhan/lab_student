@@ -40,6 +40,7 @@ public class ScreenCaptureController {
         IS_RUNNING = Boolean.TRUE;
         while (IS_RUNNING){
             Thread.sleep(200);
+            System.out.println("image");
             screenCapture.publishScreen();
         }
     }
@@ -65,6 +66,11 @@ public class ScreenCaptureController {
     public void stopScreenCapture() throws InterruptedException, IOException {
         IS_RUNNING = Boolean.FALSE;
     }
+
+    public void stopScreenCaptureMonitoring() throws InterruptedException, IOException {
+        IS_RUNNING = Boolean.FALSE;
+    }
+
     @RequestMapping(value = "/findIpAddress",method = RequestMethod.GET)
     public String findIpAddress() throws UnknownHostException {
         String ip=null;
@@ -87,9 +93,14 @@ public class ScreenCaptureController {
         return ip;
     }
 
-        @RequestMapping("/sitesBlock")
-    public void sitesBlock() throws InterruptedException, IOException, JMSException {
+    @RequestMapping("/sitesBlock")
+    public void sitesBlock() throws Exception {
         System.out.println("Sites Block");
         siteSubscriber.getMsg();
+    }
+    @RequestMapping("/sitesUnblock")
+    public void sitesUnblock() throws Exception {
+        System.out.println("Sites Unblock");
+        siteSubscriber.unblock();
     }
 }
