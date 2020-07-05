@@ -71,26 +71,23 @@ public class ScreenCaptureController {
         IS_RUNNING = Boolean.FALSE;
     }
 
-    @RequestMapping(value = "/findIpAddress",method = RequestMethod.GET)
+    @RequestMapping(value = "/findIpAddress",method = RequestMethod.POST)
     public String findIpAddress() throws UnknownHostException {
-        String ip=null;
+        InetAddress ip = null;
+        String hostname;
+        String IPAddress = null;
         try {
-            Enumeration<NetworkInterface> nics = NetworkInterface
-                    .getNetworkInterfaces();
-            while (nics.hasMoreElements()) {
-                NetworkInterface nic = nics.nextElement();
-                if (!nic.isLoopback()) {
-                    Enumeration<InetAddress> addrs = nic.getInetAddresses();
-                    while (addrs.hasMoreElements()) {
-                        InetAddress addr = addrs.nextElement();
-                        ip= addr.getHostAddress();
-                    }
-                }
-            }
-        } catch (SocketException e) {
+            ip = InetAddress.getLocalHost();
+            hostname = ip.getHostName();
+            IPAddress = ip.getHostAddress();
+            System.out.println("Your current IP address : " + ip);
+            System.out.println("Your current Hostname : " + hostname);
+
+        } catch (UnknownHostException e) {
+
             e.printStackTrace();
         }
-        return ip;
+        return IPAddress;
     }
 
     @RequestMapping("/sitesBlock")

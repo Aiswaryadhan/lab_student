@@ -40,8 +40,6 @@ public class LabStudentApplication extends SuperUserApplication {
 //    @Value("${activemq.password}")
 //    private String activemqPassword;
 
-//    @Autowired
-//    private static SiteSubscriber siteSubscriber=new SiteSubscriber();
     @Autowired
     private static ScreenCapture screenCapture=new ScreenCapture();
     @Bean

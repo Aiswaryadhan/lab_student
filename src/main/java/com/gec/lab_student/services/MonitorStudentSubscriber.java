@@ -3,9 +3,7 @@ package com.gec.lab_student.services;
 import com.gec.lab_student.controllers.ScreenCaptureController;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQTextMessage;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.jms.*;
@@ -25,11 +23,10 @@ public class MonitorStudentSubscriber {
     static Boolean IS_RUNNING=false;
     //    WebsiteBlocking websiteBlocking;
     public void check(String studId) throws JMSException, IOException, InterruptedException {
-//        System.out.println("hello");
         TopicConnection topicConnection = null;
         // Producer
         TopicConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
-                "tcp://localhost:61616");
+                "tcp://192.168.42.215:61616");
         topicConnection = connectionFactory.createTopicConnection();
 //        topicConnection.setClientID("JMSTOPIC");
 
@@ -52,12 +49,12 @@ public class MonitorStudentSubscriber {
         int len=msg1.length();
         if(len!=0){
             if(msg.equalsIgnoreCase(msg1)){
-//                System.out.println("hai");
                 screenCaptureController.startScreenCaptureMonitoring();
 
             }
             else{
-                screenCaptureController.stopScreenCaptureMonitoring();
+                screenCaptureController.
+                        stopScreenCaptureMonitoring();
             }
         }
 
@@ -65,6 +62,6 @@ public class MonitorStudentSubscriber {
         System.out.println("Message received: " + message);
 
         // close the topic connection
-        topicConnection.close();
+//        topicConnection.close();
     }
 }

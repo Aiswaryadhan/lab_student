@@ -40,21 +40,6 @@ public class ActivemqConsumerService {
 
     }
 
-    /*@JmsListener(destination = "topic_blocked_site", containerFactory = "activeMQContainerFactory")
-    public void processUrl(Message message) throws Exception {
-
-            List<String> textMessage = (List<String>) message;
-        System.out.println(" received " + textMessage);
-    }*/
-
-        /*if (message instanceof BytesMessage) {
-            BytesMessage bytesMessage = (BytesMessage) message;
-            int messageLength = new Long(bytesMessage.getBodyLength()).intValue();
-            byte[] textBytes = new byte[messageLength];
-            bytesMessage.readBytes(textBytes, messageLength);
-
-            eventSimulator.updateData(ZipUtility.byteArrayToObject(textBytes));
-        }*/
 
 
 }
